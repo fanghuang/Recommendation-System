@@ -1,0 +1,25 @@
+u1 = ['a1', 'a2', 'a3', 'a4']
+u2 = ['a1', 'a2', 'a3', 'a4']
+u3 = ['a5', 'a6', 'a7', 'a8']
+u4 = ['a1', 'a2', 'a5']
+u5 = ['a1', 'a2', 'a5', 'a6', 'a7', 'a8']
+
+import math
+
+class Helper(object):
+	
+	@classmethod
+	def cosine_similarity(self, place_lst1, place_lst2):
+		match_count = self.__count_match(place_lst1,place_lst2)
+		return float(match_count) / math.sqrt(len(place_lst1) * len(place_lst2))
+
+	@classmethod
+	def __count_match(self, lst1, lst2):
+		count = 0
+		for i in lst1:
+			if i in lst2:
+				count += 1
+		return count
+
+print Helper.cosine_similarity(u1,u4)
+print Helper.cosine_similarity(u1,u5)
